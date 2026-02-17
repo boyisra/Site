@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFE-TEXT · Gestionnaire de secrets</title>
+    <link rel="stylesheet" href="2.css">
+    <!-- Font Awesome pour icônes (cadenas) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ZONE DE SAISIE (DASHBOARD) -->
+        <header class="dashboard">
+            <h2><i class="fas fa-shield-alt"></i> SAFE·TEXT</h2>
+            <div class="input-group">
+                <label for="secretInput">Message secret</label>
+                <textarea id="secretInput" placeholder="Votre message confidentiel..." rows="3"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="cipherKey">Clé de chiffrement</label>
+                <input type="password" id="cipherKey" placeholder="Au moins 6 caractères">
+                <!-- indicateur visuel de force (barre) -->
+                <div class="strength-bar" id="strengthBar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                </div>
+                <span class="hint">(Echap: reset · Maj+S: brouiller)</span>
+            </div>
+            <form id="secretForm">
+                <button type="submit" class="btn-primary"><i class="fas fa-lock"></i> Enregistrer & chiffrer</button>
+            </form>
+        </header>
+
+        <!-- ZONE DE LISTE (ARCHIVES) avec délégation d'événements -->
+        <main class="archives">
+            <h3><i class="fas fa-archive"></i> Archives sécurisées</h3>
+            <ul id="vaultList" class="vault-list">
+                <!-- Les <li> seront injectés dynamiquement -->
+            </ul>
+        </main>
+
+        <!-- ZONE D'INDICATEURS (bas de page) -->
+        <footer class="indicators">
+            <div class="resolution-info">
+                📐 Résolution : <span id="widthSpan"></span> x <span id="heightSpan"></span>
+            </div>
+            <!-- Bouton "Retour" qui apparaît après scroll > 200px -->
+            <button id="scrollTopBtn" class="scroll-top" title="Revenir en haut"><i class="fas fa-arrow-up"></i></button>
+        </footer>
+    </div>
+
+    <!-- Message temporaire "Cleared" (toast) -->
+    <div id="panicToast" class="toast-message">Cleared ✨</div>
+
+    <script src="3.js"></script>
+</body>
+</html>
